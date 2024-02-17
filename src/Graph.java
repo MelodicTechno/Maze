@@ -20,6 +20,12 @@ public class Graph<T> {
         for (T vertex : vertices) {
             addVertex(vertex);
         }
+        // add edges
+        for (int row = 0; row < this.size(); row++) {
+            for (int column = 0; column < this.size(); column++) {
+                addEdge(row, column, edges[row][column]);
+            }
+        }
     }
 
     // get the number of the vertices
