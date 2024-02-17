@@ -10,8 +10,9 @@ public class MazeConstants {
     public static final int MAZE_SIZE = 40;
 
     // the borders
-    Border rightBorder = BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK);
-    Border topBorder = BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK);
-    Border bottomBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
-    Border leftBorder = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK);
+    public static Border SEALED_BORDER = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK);
+    public static Border RIGHT_BORDER = BorderFactory.createMatteBorder(0, 0, 0, 1, Color.WHITE);
+    public static Border TOP_BORDER = BorderFactory.createMatteBorder(1, 0, 0, 0, Color.WHITE);
+    public static Border BOTTOM_BORDER = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.WHITE);
+    public static Border LEFT_BORDER = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.WHITE);
 }
