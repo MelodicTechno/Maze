@@ -6,9 +6,9 @@ import java.util.Random;
 public class MazePuzzle {
     private final Graph<Cell, Boolean> mazeGraph;
     public MazePuzzle() {
-        int size = MazeConstants.MAZE_SIZE;
+        int size = MazeConstants.VERTEX_NUMBER;
         Boolean[][] isConnected = new Boolean[size][size];
-        Cell[] cells = new Cell[size * size];
+        Cell[] cells = new Cell[size];
         for (int row = 0; row < size; row++) {
             for (int column = 0; column < size; column++) {
                 cells[10 * row + column] = new Cell(row, column);
@@ -26,7 +26,7 @@ public class MazePuzzle {
         Random randomIndex = new Random();
         int eraseIndex1 = randomIndex.nextInt(MazeConstants.MAZE_SIZE);
         int eraseIndex2 = randomIndex.nextInt(MazeConstants.MAZE_SIZE);
-        int eraseTimes = (int) (MazeConstants.MAZE_SIZE * MazeConstants.MAZE_SIZE * extent);
+        int eraseTimes = (int) (MazeConstants.VERTEX_NUMBER * extent);
         for (int time = 0; time < eraseTimes; time++) {
             mazeGraph.addEdge(eraseIndex1, eraseIndex2, false);
         }
