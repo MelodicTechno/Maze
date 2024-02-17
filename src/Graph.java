@@ -53,7 +53,7 @@ public class Graph<Vertex, Edge> {
     // delete a vertex
     public void removeVertex(int index) {
         if (index >= this.size()) {
-            throw new IndexOutOfBoundsException();
+            return;
         }
         // remove vertex at index
         this.vertices.remove(index);
@@ -68,7 +68,7 @@ public class Graph<Vertex, Edge> {
     // add edge between index (row, column)
     public void addEdge(int row, int column, Edge edge) {
         if (row < 0 || column < 0 || row >= this.size() || column >= this.size() || row == column) {
-            throw new IndexOutOfBoundsException();
+            return;
         }
         // (i, j) is the same with (j, i)
         adjacencyMatrix.get(row).set(column, edge);
@@ -78,9 +78,19 @@ public class Graph<Vertex, Edge> {
     // remove edge at index
     public void removeEdge(int row, int column) {
         if (row < 0 || column < 0 || row >= this.size() || column >= this.size() || row == column) {
-            throw new IndexOutOfBoundsException();
+            return;
         }
         adjacencyMatrix.get(row).set(column, null);
         adjacencyMatrix.get(column).set(row, null);
     }
+
+    // show matrix
+    public List<List<Edge>> getEdges() {
+        return this.adjacencyMatrix;
+    }
+
+    public List<Vertex> getVertices() {
+        return this.vertices;
+    }
+
 }
