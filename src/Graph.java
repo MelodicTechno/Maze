@@ -6,18 +6,18 @@ import java.util.List;
  * and described with a matrix
  * every cell should be connected I guess
  */
-public class Graph<T> {
+public class Graph<Vertex, Edge> {
     // the vertices and the matrix
-    private final List<T> vertices;
-    private final List<List<T>> adjacencyMatrix;
+    private final List<Vertex> vertices;
+    private final List<List<Edge>> adjacencyMatrix;
 
     // constructor
-    public Graph(T[] vertices, T[][]edges) {
+    public Graph(Vertex[] vertices, Edge[][]edges) {
         this.vertices = new ArrayList<>();
         this.adjacencyMatrix = new ArrayList<>();
 
         // add the vertices
-        for (T vertex : vertices) {
+        for (Vertex vertex : vertices) {
             addVertex(vertex);
         }
         // add edges
@@ -34,19 +34,18 @@ public class Graph<T> {
     }
 
     // add vertices
-    public void addVertex(T value) {
+    public void addVertex(Vertex value) {
         int n = this.size();
         this.vertices.add(value);
 
         // add a row in the matrix
-        List<T> newRow = new ArrayList<>();
+        List<Edge> newRow = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             newRow.add(null);
         }
         this.adjacencyMatrix.add(newRow);
-
         // add a new column, from left to right
-        for (List<T> row : this.adjacencyMatrix) {
+        for (List<Edge> row : this.adjacencyMatrix) {
             row.add(null);
         }
     }
@@ -61,13 +60,13 @@ public class Graph<T> {
         // remove column at index
         this.adjacencyMatrix.remove(index);
         // remove column at index in the matrix
-        for (List<T> row : adjacencyMatrix) {
+        for (List<Edge> row : adjacencyMatrix) {
             row.remove(index);
         }
     }
 
     // add edge between index (row, column)
-    public void addEdge(int row, int column, T edge) {
+    public void addEdge(int row, int column, Edge edge) {
         if (row < 0 || column < 0 || row >= this.size() || column >= this.size() || row == column) {
             throw new IndexOutOfBoundsException();
         }
