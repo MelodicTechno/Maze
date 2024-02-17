@@ -60,4 +60,22 @@ public class Graph<T> {
         }
     }
 
+    // add edge between index (row, column)
+    public void addEdge(int row, int column, T edge) {
+        if (row < 0 || column < 0 || row >= this.size() || column >= this.size() || row == column) {
+            throw new IndexOutOfBoundsException();
+        }
+        // (i, j) is the same with (j, i)
+        adjacencyMatrix.get(row).set(column, edge);
+        adjacencyMatrix.get(column).set(row, edge);
+    }
+
+    // remove edge at index
+    public void removeEdge(int row, int column) {
+        if (row < 0 || column < 0 || row >= this.size() || column >= this.size() || row == column) {
+            throw new IndexOutOfBoundsException();
+        }
+        adjacencyMatrix.get(row).set(column, null);
+        adjacencyMatrix.get(column).set(row, null);
+    }
 }
