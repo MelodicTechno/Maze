@@ -13,8 +13,11 @@ public class Cell extends JTextField {
     public Cell(int row, int column) {
         this.row = row;
         this.column = column;
+        super.setHorizontalAlignment(JTextField.CENTER);
+        super.setText("");
         super.setEditable(false);
         super.setBackground(MazeConstants.BACKGROUND_COLOR);
+        super.setBorder(MazeConstants.BLANK_BORDER);
     }
 
     public int getRow() {
@@ -28,14 +31,25 @@ public class Cell extends JTextField {
     // using the boarder to show if it is opened
     public void makeBoarder(String direction) {
         Border oldBorder = super.getBorder();
-        Border newBorder = switch (direction) {
-            case "up" -> BorderFactory.createCompoundBorder(MazeConstants.TOP_BORDER, oldBorder);
-            case "down" -> BorderFactory.createCompoundBorder(MazeConstants.BOTTOM_BORDER, oldBorder);
-            case "left" -> BorderFactory.createCompoundBorder(MazeConstants.LEFT_BORDER, oldBorder);
-            case "right" -> BorderFactory.createCompoundBorder(MazeConstants.RIGHT_BORDER, oldBorder);
-            default -> null;
-        };
-        super.setBorder(newBorder);
+        Border newBorder;
+        switch (direction) {
+            case (MazeConstants.UP_POSITION) :
+                newBorder = BorderFactory.createCompoundBorder(MazeConstants.TOP_BORDER, oldBorder);
+                super.setBorder(newBorder);
+                break;
+            case (MazeConstants.DOWN_POSITION) :
+                newBorder = BorderFactory.createCompoundBorder(MazeConstants.BOTTOM_BORDER, oldBorder);
+                super.setBorder(newBorder);
+                break;
+            case (MazeConstants.LEFT_POSITION) :
+                newBorder = BorderFactory.createCompoundBorder(MazeConstants.LEFT_BORDER, oldBorder);
+                super.setBorder(newBorder);
+                break;
+            case (MazeConstants.RIGHT_POSITION) :
+                newBorder = BorderFactory.createCompoundBorder(MazeConstants.RIGHT_BORDER, oldBorder);
+                super.setBorder(newBorder);
+                break;
+        }
     }
     // check if the cell is beside other cells
     public boolean isNeighborTo(Cell anotherCell) {
