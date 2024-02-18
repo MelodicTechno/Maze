@@ -12,7 +12,7 @@ public class MazePuzzle {
         Cell[] cells = new Cell[size];
         for (int row = 0; row < MazeConstants.MAZE_SIZE; row++) {
             for (int column = 0; column < MazeConstants.MAZE_SIZE; column++) {
-                cells[40 * row + column] = new Cell(row, column);
+                cells[MazeConstants.MAZE_SIZE * row + column] = new Cell(row, column);
             }
         }
         for (int row = 0; row < size; row++) {
