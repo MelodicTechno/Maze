@@ -5,46 +5,42 @@ import java.util.Random;
  * The MazePuzzle was used to store the information of the game
  */
 public class MazePuzzle {
-    private final Graph<Cell, Boolean> mazeGraph;
+    private final ListGraph<Cell> mazeGraph;
+    private final Cell[][] cells;
     public MazePuzzle() {
-        int size = MazeConstants.VERTEX_NUMBER;
-        Boolean[][] isConnected = new Boolean[size][size];
-        Cell[] cells = new Cell[size];
+        this.mazeGraph = new ListGraph<>();
+        this.cells = new Cell[MazeConstants.MAZE_SIZE][MazeConstants.MAZE_SIZE];
+        // initialize every cell
         for (int row = 0; row < MazeConstants.MAZE_SIZE; row++) {
             for (int column = 0; column < MazeConstants.MAZE_SIZE; column++) {
-                cells[MazeConstants.MAZE_SIZE * row + column] = new Cell(row, column);
+                cells[row][column] = new Cell(row, column);
+                // add the cells to the graph
+                mazeGraph.addVertex(cells[row][column]);
+                if (row - 1 >= 0) {
+                    mazeGraph.addEdge(cells[row - 1][column], cells[row][column]);
+                }
+                if (row + 1 < MazeConstants.MAZE_SIZE) {
+                    mazeGraph.addEdge(cells[row + 1][column], cells[row][column]);
+                }
+                if (column - 1 >= 0) {
+                    mazeGraph.addEdge(cells[row][column - 1], cells[row][column]);
+                }
+                if (column + 1 < MazeConstants.MAZE_SIZE) {
+                    mazeGraph.addEdge(cells[row][column + 1], cells[row][column]);
+                }
             }
         }
-        for (int row = 0; row < size; row++) {
-            for (int column = 0; column < size; column++) {
-                isConnected[row][column] = true;
-            }
-        }
-        this.mazeGraph = new Graph<>(cells, isConnected);
     }
-    public Graph<Cell, Boolean> getMazeGraph() {
+    public ListGraph<Cell> getMazeGraph() {
         return this.mazeGraph;
+    }
+
+    public Cell[][] getCells () {
+        return this.cells;
     }
 
     // erase the edges
     public void eraseEdges(double extent) {
-        Random randomIndex = new Random();
-        HashSet<Integer> addedIndexes = new HashSet<>();
-
-        int eraseTimes = (int) (MazeConstants.VERTEX_NUMBER * extent);
-        System.out.println("erase " + eraseTimes + " times" );
-        int times = 0;
-        while (times < eraseTimes) {
-            int eraseIndex1 = randomIndex.nextInt(0, MazeConstants.VERTEX_NUMBER);
-            int eraseIndex2 = randomIndex.nextInt(0, MazeConstants.VERTEX_NUMBER);
-            if (addedIndexes.contains(eraseIndex1) || addedIndexes.contains(eraseIndex2)) {
-                continue;
-            }
-            mazeGraph.addEdge(eraseIndex1, eraseIndex2, false);
-            times++;
-            addedIndexes.add(eraseIndex1);
-            addedIndexes.add(eraseIndex2);
-        }
-        System.out.println("all erasing finished");
+        
     }
 }

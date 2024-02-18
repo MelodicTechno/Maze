@@ -22,7 +22,7 @@ public class ListGraph<Vertex> {
     // Remove a vertex
     public void removeVertex(Vertex vertex) {
         if (!adjacencyList.containsKey(vertex)) {
-            throw new IllegalArgumentException();
+            return;
         }
         // delete v's edges
         adjacencyList.remove(vertex);
@@ -39,7 +39,7 @@ public class ListGraph<Vertex> {
     // add edges
     public void addEdge(Vertex vertex1, Vertex vertex2) {
         if (!adjacencyList.containsKey(vertex1) || !adjacencyList.containsKey(vertex2) || vertex1.equals(vertex2)) {
-            throw new IllegalArgumentException();
+            return;
         }
         // add the edge between v1 and v2
         adjacencyList.get(vertex1).add(vertex2);
@@ -49,7 +49,7 @@ public class ListGraph<Vertex> {
     // remove edges
     public void removeEdge(Vertex vertex1, Vertex vertex2) {
         if (!adjacencyList.containsKey(vertex1) || !adjacencyList.containsKey(vertex2) || vertex1.equals(vertex2)) {
-            throw new IllegalArgumentException();
+            return;
         }
         // remove edge between v1 and v2
         adjacencyList.get(vertex1).remove(vertex2);
