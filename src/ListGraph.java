@@ -7,7 +7,7 @@ public class ListGraph<Vertex> {
     // The adjacency list
     private final Map<Vertex, List<Vertex>> adjacencyList;
     // constructor
-    public ListGraph(Vertex[][] edges) {
+    public ListGraph() {
         this.adjacencyList = new HashMap<>();
     }
 
