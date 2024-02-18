@@ -55,4 +55,13 @@ public class ListGraph<Vertex> {
         adjacencyList.get(vertex1).remove(vertex2);
         adjacencyList.get(vertex2).remove(vertex1);
     }
+
+    // print the adjacency list
+    public void print() {
+        System.out.println("the adjacency list:");
+        for (Map.Entry<Vertex, List<Vertex>> pair : adjacencyList.entrySet()) {
+            List<Vertex> tmp = new ArrayList<>(pair.getValue());
+            System.out.println(pair.getKey() + " : " + tmp + " , ");
+        }
+    }
 }
