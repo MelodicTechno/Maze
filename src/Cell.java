@@ -21,11 +21,11 @@ public class Cell extends JTextField {
     }
 
     public int getRow() {
-        return this.row;
+        return row;
     }
 
     public int getColumn() {
-        return this.column;
+        return column;
     }
 
     // using the boarder to show if it is opened
@@ -50,6 +50,7 @@ public class Cell extends JTextField {
                 super.setBorder(newBorder);
                 break;
         }
+        super.setBorder(MazeConstants.SEALED_BORDER);
     }
     // check if the cell is beside other cells
     public boolean isNeighborTo(Cell anotherCell) {
