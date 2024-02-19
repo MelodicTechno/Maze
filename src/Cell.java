@@ -50,7 +50,7 @@ public class Cell extends JTextField {
                 super.setBorder(newBorder);
                 break;
         }
-        super.setBorder(MazeConstants.SEALED_BORDER);
+        // super.setBorder(MazeConstants.SEALED_BORDER);
     }
     // check if the cell is beside other cells
     public boolean isNeighborTo(Cell anotherCell) {

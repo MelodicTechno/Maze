@@ -1,4 +1,3 @@
-import java.util.HashSet;
 import java.util.Random;
 
 /**
@@ -41,6 +40,24 @@ public class MazePuzzle {
 
     // erase the edges
     public void eraseEdges(double extent) {
-        
+        Random cellPicker = new Random();
+        int times = (int) (MazeConstants.VERTEX_NUMBER * extent * 4);
+        for (int time = 0; time < times; time++) {
+            Cell cell1 = cells[cellPicker.nextInt(MazeConstants.MAZE_SIZE)]
+                    [cellPicker.nextInt(MazeConstants.MAZE_SIZE)];
+            int newRow = cell1.getRow() + cellPicker.nextInt(-1, 1);
+            int newColumn = cell1.getColumn() + cellPicker.nextInt(-1, 1);
+            if (newRow < 0 || newRow >= MazeConstants.MAZE_SIZE || newColumn < 0
+                    || newColumn >= MazeConstants.MAZE_SIZE) {
+                continue;
+            }
+            Cell cell2 = cells[newRow][newColumn];
+            if (!cell1.isNeighborTo(cell2)) {
+                continue;
+            }
+            String position = cell1.getPositionOfNeighbor(cell2);
+            cell1.makeBoarder(position);
+            this.mazeGraph.removeEdge(cell1, cell2);
+        }
     }
 }
