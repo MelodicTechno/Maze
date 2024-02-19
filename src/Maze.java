@@ -20,5 +20,4 @@ public class Maze extends JPanel {
             }
         }
     }
-
 }

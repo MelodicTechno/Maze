@@ -19,7 +19,6 @@ public class Main extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Maze");
         setVisible(true);
-        System.out.println("everything is done");
     }
     public static void main(String[] args) {
         // 更改界面风格
