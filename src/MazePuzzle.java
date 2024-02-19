@@ -82,4 +82,8 @@ public class MazePuzzle {
             this.mazeGraph.removeEdge(cell1, cell2);
         }
     }
+
+    public ListGraph<Cell> getMazeGraph() {
+        return this.mazeGraph;
+    }
 }
