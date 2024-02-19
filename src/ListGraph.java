@@ -7,7 +7,6 @@ public class ListGraph<Vertex> {
     // The adjacency list
     private final Map<Vertex, List<Vertex>> adjacencyList;
     // constructor
-
     public ListGraph() {
         this.adjacencyList = new HashMap<>();
     }
@@ -64,5 +63,9 @@ public class ListGraph<Vertex> {
             List<Vertex> tmp = new ArrayList<>(pair.getValue());
             System.out.println(pair.getKey() + " : " + tmp + " , ");
         }
+    }
+
+    public Map<Vertex, List<Vertex>> getAdjacencyList() {
+        return this.adjacencyList;
     }
 }
