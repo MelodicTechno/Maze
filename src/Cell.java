@@ -2,12 +2,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.io.Serial;
 
-public class Cell extends JTextField {
+public class Cell extends JTextField implements Comparable<Cell>, Node {
     @Serial
     private static final long serialVersionUID = 1L;
     // the data of cells should be described with a matrix
     private final int row;
     private final int column;
+    private int cost;
 
     // constructor
     public Cell(int row, int column) {
@@ -84,5 +85,18 @@ public class Cell extends JTextField {
         else {
             return MazeConstants.RIGHT_POSITION;
         }
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public int getCost() {
+        return this.cost;
+    }
+
+    @Override
+    public int compareTo(Cell anotherCell) {
+        return Integer.compare(this.cost, anotherCell.getCost());
     }
 }
