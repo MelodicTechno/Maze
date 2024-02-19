@@ -13,6 +13,7 @@ public class Main extends JFrame{
         cp.setLayout(new BorderLayout());
         Maze maze = new Maze();
         cp.add(maze);
+        super.setResizable(false);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
