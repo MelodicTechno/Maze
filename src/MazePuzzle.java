@@ -30,20 +30,26 @@ public class MazePuzzle {
                 }
                 // add the cells to the graph
                 mazeGraph.addVertex(cells[row][column]);
+
+                // Add the edges if neighbors exist
                 if (row - 1 >= 0) {
                     mazeGraph.addEdge(cells[row - 1][column], cells[row][column]);
+                    cells[row - 1][column].setCost(1);
                     this.edges++;
                 }
                 if (row + 1 < MazeConstants.MAZE_SIZE) {
                     mazeGraph.addEdge(cells[row + 1][column], cells[row][column]);
+                    cells[row + 1][column].setCost(1);
                     this.edges++;
                 }
                 if (column - 1 >= 0) {
                     mazeGraph.addEdge(cells[row][column - 1], cells[row][column]);
+                    cells[row][column - 1].setCost(1);
                     this.edges++;
                 }
                 if (column + 1 < MazeConstants.MAZE_SIZE) {
                     mazeGraph.addEdge(cells[row][column + 1], cells[row][column]);
+                    cells[row][column + 1].setCost(1);
                     this.edges++;
                 }
             }
@@ -85,5 +91,10 @@ public class MazePuzzle {
 
     public ListGraph<Cell> getMazeGraph() {
         return this.mazeGraph;
+    }
+
+    // get the answer of the maze
+    public void getAnswer() {
+
     }
 }
