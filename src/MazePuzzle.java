@@ -6,7 +6,7 @@ import java.util.Random;
  * The MazePuzzle was used to store the information of the game
  */
 public class MazePuzzle {
-    private final ListGraph<Cell> mazeGraph;
+    private final ListGraph<Cell, Integer> mazeGraph;
     private final Cell[][] cells;
     private int edges;
     public MazePuzzle() {
@@ -34,19 +34,19 @@ public class MazePuzzle {
 
                 // Add the edges if neighbors exist
                 if (row - 1 >= 0) {
-                    mazeGraph.addEdge(cells[row - 1][column], cells[row][column]);
+                    mazeGraph.addEdge(cells[row - 1][column], cells[row][column], 1);
                     this.edges++;
                 }
                 if (row + 1 < MazeConstants.MAZE_SIZE) {
-                    mazeGraph.addEdge(cells[row + 1][column], cells[row][column]);
+                    mazeGraph.addEdge(cells[row + 1][column], cells[row][column], 1);
                     this.edges++;
                 }
                 if (column - 1 >= 0) {
-                    mazeGraph.addEdge(cells[row][column - 1], cells[row][column]);
+                    mazeGraph.addEdge(cells[row][column - 1], cells[row][column], 1);
                     this.edges++;
                 }
                 if (column + 1 < MazeConstants.MAZE_SIZE) {
-                    mazeGraph.addEdge(cells[row][column + 1], cells[row][column]);
+                    mazeGraph.addEdge(cells[row][column + 1], cells[row][column], 1);
                     this.edges++;
                 }
             }
@@ -86,7 +86,7 @@ public class MazePuzzle {
         }
     }
 
-    public ListGraph<Cell> getMazeGraph() {
+    public ListGraph<Cell, Integer> getMazeGraph() {
         return this.mazeGraph;
     }
 
