@@ -23,6 +23,7 @@ public class MazeDijkstra {
         }
         priorityQueue.add(cells[0][0]);
         distance.put(cells[0][0], 0);
+        cells[0][0].getMarked();
 
         while (settled.size() != MazeConstants.VERTEX_NUMBER) {
             if (priorityQueue.isEmpty()) {
@@ -55,6 +56,7 @@ public class MazeDijkstra {
                     destinyCell.setCost(newDistance);
                 }
                 priorityQueue.add(destinyCell);
+                destinyCell.getMarked();
             }
         }
     }

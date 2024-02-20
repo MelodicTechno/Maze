@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import java.awt.*;
 import java.io.Serial;
 
 public class Cell extends JTextField implements Comparable<Cell>, Node {
@@ -18,6 +19,7 @@ public class Cell extends JTextField implements Comparable<Cell>, Node {
         super.setText("");
         super.setEditable(false);
         super.setBackground(MazeConstants.BACKGROUND_COLOR);
+        setForeground(Color.RED);
         super.setBorder(MazeConstants.BLANK_BORDER);
     }
 
@@ -85,6 +87,11 @@ public class Cell extends JTextField implements Comparable<Cell>, Node {
         else {
             return MazeConstants.RIGHT_POSITION;
         }
+    }
+
+    // draw the path to the end
+    public void getMarked() {
+        setText("·");
     }
 
     public void setCost(int cost) {

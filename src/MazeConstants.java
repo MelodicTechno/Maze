@@ -24,4 +24,5 @@ public class MazeConstants {
 
     // colors
     public static final Color BACKGROUND_COLOR = Color.white;
+
 }

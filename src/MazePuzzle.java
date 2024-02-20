@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -93,5 +94,7 @@ public class MazePuzzle {
     public void getAnswer() {
         MazeDijkstra mazeDijkstra = new MazeDijkstra(this);
         mazeDijkstra.dijkstra();
+        HashMap<Cell, Integer> distance = mazeDijkstra.getDistance();
+
     }
 }
