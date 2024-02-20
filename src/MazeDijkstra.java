@@ -58,4 +58,9 @@ public class MazeDijkstra {
             }
         }
     }
+
+    // get the distance to get the answer of the maze
+    public HashMap<Cell, Integer> getDistance() {
+        return this.distance;
+    }
 }

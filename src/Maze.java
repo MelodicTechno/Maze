@@ -12,6 +12,7 @@ public class Maze extends JPanel {
                 MazeConstants.MAZE_SIZE * MazeConstants.CELL_SIZE));
         MazePuzzle mazePuzzle = new MazePuzzle();
         mazePuzzle.eraseEdges(0.7);
+        mazePuzzle.getAnswer();
         // a maze has 40 * 40 cells
         Cell[][] cells = mazePuzzle.getCells();
         for (int row = 0; row < MazeConstants.MAZE_SIZE; row++) {
