@@ -61,7 +61,7 @@ public class MazePuzzle {
     public void eraseEdges(double extent) {
         HashSet<Cell> addedCells = new HashSet<>();
         Random cellPicker = new Random();
-        int times = (int) (this.edges * extent * 4);
+        int times = (int) (this.edges * extent);
         for (int time = 0; time < times; time++) {
             Cell cell1 = cells[cellPicker.nextInt(MazeConstants.MAZE_SIZE)]
                     [cellPicker.nextInt(MazeConstants.MAZE_SIZE)];
@@ -95,6 +95,10 @@ public class MazePuzzle {
         MazeDijkstra mazeDijkstra = new MazeDijkstra(this);
         mazeDijkstra.dijkstra();
         HashMap<Cell, Integer> distance = mazeDijkstra.getDistance();
-
+        if (!distance.containsKey(cells[MazeConstants.MAZE_SIZE - 1][MazeConstants.MAZE_SIZE - 1])) {
+            System.out.println("No answer");
+            return;
+        }
+        System.out.println(distance.get(cells[MazeConstants.MAZE_SIZE - 1][MazeConstants.MAZE_SIZE - 1]));
     }
 }

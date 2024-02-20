@@ -3,7 +3,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.io.Serial;
 
-public class Cell extends JTextField implements Comparable<Cell>, Node {
+public class Cell extends JTextField implements Comparable<Cell> {
     @Serial
     private static final long serialVersionUID = 1L;
     // the data of cells should be described with a matrix
@@ -15,6 +15,7 @@ public class Cell extends JTextField implements Comparable<Cell>, Node {
     public Cell(int row, int column) {
         this.row = row;
         this.column = column;
+        this.cost = Integer.MAX_VALUE;
         super.setHorizontalAlignment(JTextField.CENTER);
         super.setText("");
         super.setEditable(false);

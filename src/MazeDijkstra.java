@@ -56,7 +56,6 @@ public class MazeDijkstra {
                     destinyCell.setCost(newDistance);
                 }
                 priorityQueue.add(destinyCell);
-                destinyCell.getMarked();
             }
         }
     }
