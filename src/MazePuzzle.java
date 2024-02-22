@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -98,6 +99,9 @@ public class MazePuzzle {
         if (!distance.containsKey(cells[MazeConstants.MAZE_SIZE - 1][MazeConstants.MAZE_SIZE - 1])) {
             System.out.println("No answer");
             return;
+        }
+        for (Map.Entry<Cell, Integer> entry : distance.entrySet()) {
+            entry.getKey().getMarked();
         }
         System.out.println(distance.get(cells[MazeConstants.MAZE_SIZE - 1][MazeConstants.MAZE_SIZE - 1]));
     }
